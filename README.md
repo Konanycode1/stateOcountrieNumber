@@ -28,10 +28,6 @@ if (info) {
 }
 
 
-
-
-
-
 ### Example: Split Phone Number into Country Code and the Rest of the Number
 
 This function allows you to split a full phone number into the country code, the rest of the number, and the corresponding country name.

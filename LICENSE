@@ -19,3 +19,21 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+
+---
+
+### Explanation of the Sections in the Documentation:
+
+1. **Installation**: Explains how to install the package using `pnpm` or `npm`.
+2. **Usage**: Shows how to use the package in a TypeScript project.
+3. **Parameters**: Describes the expected argument for the function.
+4. **Return**: Details what the function returns, including an example.
+5. **Features**: Highlights the strengths of the package.
+6. **Development**: Explains the TypeScript configuration and how to compile the code.
+7. **Contributing**: Describes how to contribute to the project.
+8. **License**: Specifies the project's license (MIT in this case).
+
+This should make your package more accessible to developers who want to use it or contribute to it!
+

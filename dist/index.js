@@ -1,10 +1,15 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.splitPhoneNumber = void 0;
 exports.getInfoByPhone = getInfoByPhone;
+const path_1 = __importDefault(require("path"));
 const fs_1 = require("fs");
-const rawData = (0, fs_1.readFileSync)('./src/utils/data.json', 'utf-8');
-const countryData = JSON.parse(rawData);
+// Résolution dynamique du chemin vers `data.json`
+const dataPath = path_1.default.resolve(__dirname, 'utils/data.json');
+const countryData = JSON.parse((0, fs_1.readFileSync)(dataPath, 'utf8'));
 function getInfoByPhone(phoneNumber) {
     // Valider le format du numéro
     if (!phoneNumber.startsWith('+')) {
@@ -73,16 +78,3 @@ const splitPhoneNumber = (phoneNumber) => {
     };
 };
 exports.splitPhoneNumber = splitPhoneNumber;
-// Exemple d'utilisation
-// const phone = '+2250141822918';
-// try {
-//   const result = splitPhoneNumber(phone);
-//   console.log(result);
-//   if (result) {
-//     console.log('Informations trouvées :', result);
-//   } else {
-//     console.log('Aucun pays trouvé pour ce numéro.');
-//   }
-// } catch (error) {
-//   console.error('Erreur:', error);
-// }

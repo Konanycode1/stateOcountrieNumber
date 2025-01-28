@@ -1,7 +1,10 @@
+import path from 'path';
 import { readFileSync } from 'fs';
 import { CountryInfo } from './interface/interface.countrie';
-const rawData = readFileSync('./src/utils/data.json', 'utf-8');
-const countryData = JSON.parse(rawData);
+
+// Résolution dynamique du chemin vers `data.json`
+const dataPath = path.resolve(__dirname, 'utils/data.json');
+const countryData = JSON.parse(readFileSync(dataPath, 'utf8'));
 
   
 
@@ -82,9 +85,9 @@ export const splitPhoneNumber = (phoneNumber: string): { countryCode: string; re
 };
 
 // Exemple d'utilisation
-// const phone = '+2250141822918';
+const phone = '+2250141822918';
 // try {
-//   const result = splitPhoneNumber(phone);
+//   const result = getInfoByPhone(phone);
 //   console.log(result);
 //   if (result) {
 //     console.log('Informations trouvées :', result);
@@ -94,3 +97,16 @@ export const splitPhoneNumber = (phoneNumber: string): { countryCode: string; re
 // } catch (error) {
 //   console.error('Erreur:', error);
 // }
+
+
+try {
+  const result = splitPhoneNumber(phone);
+  console.log(result);
+  if (result) {
+    console.log('Informations trouvées :', result);
+  } else {
+    console.log('Aucun pays trouvé pour ce numéro.');
+  }
+} catch (error) {
+  console.error('Erreur:', error);
+}

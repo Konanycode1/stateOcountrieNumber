@@ -1,6 +1,6 @@
 {
-  "name": "country-phone-info",
-  "version": "1.0.5",
+  "name": "country-phones-info",
+  "version": "1.0.0",
   "description": "Get country information based on phone numbers.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

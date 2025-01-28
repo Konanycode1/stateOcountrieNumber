@@ -78,3 +78,29 @@ const splitPhoneNumber = (phoneNumber) => {
     };
 };
 exports.splitPhoneNumber = splitPhoneNumber;
+// Exemple d'utilisation
+const phone = '+2250141822918';
+// try {
+//   const result = getInfoByPhone(phone);
+//   console.log(result);
+//   if (result) {
+//     console.log('Informations trouvées :', result);
+//   } else {
+//     console.log('Aucun pays trouvé pour ce numéro.');
+//   }
+// } catch (error) {
+//   console.error('Erreur:', error);
+// }
+try {
+    const result = (0, exports.splitPhoneNumber)(phone);
+    console.log(result);
+    if (result) {
+        console.log('Informations trouvées :', result);
+    }
+    else {
+        console.log('Aucun pays trouvé pour ce numéro.');
+    }
+}
+catch (error) {
+    console.error('Erreur:', error);
+}

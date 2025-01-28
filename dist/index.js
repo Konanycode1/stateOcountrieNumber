@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.splitPhoneNumber = void 0;
 exports.getInfoByPhone = getInfoByPhone;
 const fs_1 = require("fs");
 const rawData = (0, fs_1.readFileSync)('./src/utils/data.json', 'utf-8');
@@ -41,10 +42,42 @@ function getInfoByPhone(phoneNumber) {
     }
     return null; // Aucun pays trouvé
 }
+/**
+ * Function to split a phone number into country code and the rest of the number
+ * @param phoneNumber - The full phone number including country code (e.g., +2210141822918)
+ * @returns An object containing the country code and the rest of the number
+ */
+const splitPhoneNumber = (phoneNumber) => {
+    if (!phoneNumber.startsWith('+')) {
+        throw new Error("The phone number must start with '+'.");
+    }
+    // Remove the "+" and iterate over the country codes to find a match
+    const cleanedNumber = phoneNumber.slice(1);
+    for (const country of countryData) {
+        const countryCode = country.phonecode;
+        // Check if the number starts with the current country's phone code
+        if (cleanedNumber.startsWith(countryCode)) {
+            const restOfNumber = cleanedNumber.slice(countryCode.length);
+            return {
+                countryCode,
+                restOfNumber,
+                countryName: country.name,
+            };
+        }
+    }
+    // If no match is found
+    return {
+        countryCode: '',
+        restOfNumber: phoneNumber,
+        countryName: null,
+    };
+};
+exports.splitPhoneNumber = splitPhoneNumber;
 // Exemple d'utilisation
 // const phone = '+2250141822918';
 // try {
-//   const result = getInfoByPhone(phone);
+//   const result = splitPhoneNumber(phone);
+//   console.log(result);
 //   if (result) {
 //     console.log('Informations trouvées :', result);
 //   } else {
